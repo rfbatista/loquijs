@@ -1,1 +1,0 @@
-We could implement differents strategies to handle a dialog
