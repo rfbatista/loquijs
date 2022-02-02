@@ -1,7 +1,7 @@
 import Component, { ComponentsTypesEnum } from '../../entities/Components';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 import { StepIdType } from '../../entities/Step';
-import StepSchema from './StepSchema';
+import StepSchema from './Step.schema';
 
 export type ComponentSchemaType = {
   id?: string;
@@ -16,7 +16,10 @@ export default class ComponentSchema implements ComponentSchemaType {
   @PrimaryGeneratedColumn()
   id?: string;
 
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: ComponentsTypesEnum,
+  })
   type: ComponentsTypesEnum;
 
   @Column()
@@ -25,7 +28,9 @@ export default class ComponentSchema implements ComponentSchemaType {
   @ManyToMany(() => StepSchema)
   stepId: string;
 
-  @Column()
+  @Column({
+    type: 'json',
+  })
   payload: any;
 
   constructor(props: ComponentSchemaType) {

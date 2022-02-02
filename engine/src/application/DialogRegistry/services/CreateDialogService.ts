@@ -1,21 +1,35 @@
-import { Result } from 'src/application/Result';
-import { IService } from 'src/application/Service';
+import { ApplicationResult } from 'src/application/ApplicationResult';
+import { IApplicationService } from 'src/application/Service';
 import { Flow, FlowType } from '../entities/Flow';
+
+type ComponentType = {};
+
+type DialogNode = {
+  id: string;
+  type: 'step';
+  data: ComponentType[];
+  position: { x: number; y: number };
+};
 
 export type CreateDialogServiceOutput = {};
 
 export type CreateDialogServiceInput = {
-  dialog: FlowType;
+  name: string;
+  dialog: DialogNode[];
 };
 
 export default class CreateDialogService
-  implements IService<CreateDialogServiceInput, CreateDialogServiceOutput>
+  implements
+    IApplicationService<CreateDialogServiceInput, CreateDialogServiceOutput>
 {
   constructor() {}
   async execute(
     input: CreateDialogServiceInput,
-  ): Promise<Result<CreateDialogServiceOutput>> {
-    const result = Flow.create(input.dialog);
-    return result;
+  ): Promise<ApplicationResult<CreateDialogServiceOutput>> {
+    const flowOrError = Flow.create({ name: input.name });
+		if(flowOrError.isFailure)
+			return flowOrError;
+		const flow = flowOrError.getValue()
+    return;
   }
 }

@@ -1,5 +1,5 @@
-import { Result } from './Result';
+import { ApplicationResult } from './ApplicationResult';
 
-export interface IService<Input, Output> {
-  execute(input: Input): Promise<Result<Output>>;
+export interface IApplicationService<Input, Output> {
+  execute(input: Input): Promise<ApplicationResult<Output>>;
 }

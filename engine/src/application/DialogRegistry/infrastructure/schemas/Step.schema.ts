@@ -6,8 +6,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { Step } from '../../entities/Step';
-import ComponentSchema from './ComponentSchema';
-import { FlowSchema } from './FlowSchema';
+import ComponentSchema from './Component.schema';
+import { FlowSchema } from './Flow.schema';
 export type StepSchemaType = {
   id?: string;
   name: string;

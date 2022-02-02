@@ -5,7 +5,7 @@ import {
   OneToOne,
   Entity,
 } from 'typeorm';
-import StepSchema from './StepSchema';
+import StepSchema from './Step.schema';
 import { Flow } from '../../entities/Flow';
 
 export type FlowSchemaType = {

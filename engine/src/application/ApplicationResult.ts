@@ -1,4 +1,4 @@
-export class Result<T> {
+export class ApplicationResult<T> {
   public isSuccess: boolean;
   public isFailure: boolean;
   public error: T | string;
@@ -39,18 +39,18 @@ export class Result<T> {
     return this.error as T;
   }
 
-  public static ok<U>(value?: U): Result<U> {
-    return new Result<U>(true, null, value);
+  public static ok<U>(value?: U): ApplicationResult<U> {
+    return new ApplicationResult<U>(true, null, value);
   }
 
-  public static fail<U>(error: string): Result<U> {
-    return new Result<U>(false, error);
+  public static fail<U>(error: string): ApplicationResult<U> {
+    return new ApplicationResult<U>(false, error);
   }
 
-  public static combine(results: Result<any>[]): Result<any> {
+  public static combine(results: ApplicationResult<any>[]): ApplicationResult<any> {
     for (const result of results) {
       if (result.isFailure) return result;
     }
-    return Result.ok();
+    return ApplicationResult.ok();
   }
 }
