@@ -1,6 +1,6 @@
 # loquijs
 
-Uma engine para construcao de chatbots.
+Another (but a lot better) chatbot engine for domain specific use cases.
 
 | Status | Feature           | Release |
 |--------|-------------------|---------|
